@@ -35,7 +35,7 @@
 2.  **Run Tool**: In the Unreal Editor, go to the top menu bar:
     *   **Tools** > **Pathify: Recreate Path (Clipboard)**
 3.  **Result**: The plugin will parse the paths, find the folder structure relative to `Content`, and create any missing directories in your Content Browser.
-4.  **Report**: A message box will appear summarizing how many folders were created, how many already existed, and if any paths failed.
+4.  **Report**: A log message will appear in Editor's console summarizing how many folders were created, how many already existed, and if any paths failed.
 
 ## Requirements
 
