@@ -25,29 +25,6 @@ def get_clipboard_text():
         unreal.log_error(f"Pathify: Failed to read clipboard via PowerShell: {e}")
         return None
 
-def show_message_box(title, message, is_error=False):
-    """
-    Shows a message using Unreal's native dialog if possible, or logs it.
-    """
-    # Use Unreal's built-in dialog if available in Python API
-    # unreal.EditorDialog.show_message(title, message, unreal.AppMsgType.OK)
-    # Note: EditorDialog might not be exposed in all versions.
-    # Fallback to logging which is always safe.
-    
-    log_type = unreal.LogSeverity.ERROR if is_error else unreal.LogSeverity.INFO
-    
-    # Try to use a native UE dialog
-    try:
-        msg_type = unreal.AppMsgType.OK
-        unreal.EditorDialog.show_message(title, message, msg_type)
-    except:
-        # Fallback to log
-        if is_error:
-            unreal.log_error(f"{title}: {message}")
-        else:
-            unreal.log(f"{title}: {message}")
-
-
 def recreate_path_from_clipboard():
     """
     Reads path(s) from clipboard and recreates structure.
@@ -58,7 +35,6 @@ def recreate_path_from_clipboard():
     if not clipboard_text:
         msg = "Clipboard is empty or does not contain text."
         unreal.log_warning(f"Pathify: {msg}")
-        show_message_box("Pathify Error", msg, True)
         return
 
     # Split by lines to support batch processing
@@ -69,7 +45,7 @@ def recreate_path_from_clipboard():
     
     if not paths:
         msg = "No valid paths found in clipboard."
-        show_message_box("Pathify Info", msg, False)
+        unreal.log(f"Pathify: {msg}")
         return
 
     unreal.log(f"Pathify: Found {len(paths)} path(s) in clipboard.")
@@ -114,7 +90,6 @@ def recreate_path_from_clipboard():
         # Create directory
         if unreal.EditorAssetLibrary.does_directory_exist(game_path):
              existing_count += 1
-             # details.append(f"[EXIST] {game_path}") # Optional: too verbose?
         elif unreal.EditorAssetLibrary.make_directory(game_path):
             created_count += 1
             unreal.log(f"Pathify: Created {game_path}")
@@ -125,19 +100,13 @@ def recreate_path_from_clipboard():
             details.append(f"[FAIL] Error creating: {game_path}")
 
     # Summary
-    summary_msg = f"Processed {len(paths)} path(s).\n\n"
-    summary_msg += f"Created: {created_count}\n"
-    summary_msg += f"Already Existed: {existing_count}\n"
-    summary_msg += f"Failed: {failed_count}"
+    summary_msg = f"Processed {len(paths)} path(s). Created: {created_count}, Existed: {existing_count}, Failed: {failed_count}"
     
-    is_error = failed_count > 0 and created_count == 0
-    
-    # If there were failures, log details to output log
     if failed_count > 0:
         unreal.log_error("Pathify Batch Report:\n" + "\n".join(details))
-        summary_msg += "\n\nCheck Output Log for failure details."
-    
-    show_message_box("Pathify Batch Result", summary_msg, is_error)
+        unreal.log_error(summary_msg)
+    else:
+        unreal.log(summary_msg)
 
 def init_menu():
     menus = unreal.ToolMenus.get()
