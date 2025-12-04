@@ -1,3 +1,6 @@
+
+![Pathify Banner](https://i.imgur.com/jNddfU4.png)
+
 # Pathify for Unreal Engine
 
 **Pathify** is a lightweight Unreal Engine plugin that automates the creation of folder structures within your project's Content Browser. It reads asset paths directly from your clipboard and instantly recreates the corresponding directory hierarchy in your project.
