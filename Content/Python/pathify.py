@@ -132,6 +132,3 @@ def init_menu():
     main_menu.add_menu_entry("Tools", entry)
     menus.refresh_all_widgets()
 
-if __name__ == "__main__":
-    init_menu()
-    unreal.log("Pathify: Plugin loaded.")
