@@ -126,7 +126,7 @@ def init_menu():
     entry.set_string_command(
         type=unreal.ToolMenuStringCommandType.PYTHON,
         custom_type="Pathify",
-        string="import init_unreal; init_unreal.recreate_path_from_clipboard()" 
+        string="import pathify; pathify.recreate_path_from_clipboard()" 
     )
     
     main_menu.add_menu_entry("Tools", entry)
