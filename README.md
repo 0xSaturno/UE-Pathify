@@ -1,9 +1,9 @@
 
-![Pathify Banner](https://i.imgur.com/jNddfU4.png)
+![UEtilities Banner](https://i.imgur.com/jNddfU4.png)
 
-# Pathify for Unreal Engine
+# UEtilities for Unreal Engine
 
-**Pathify** is a lightweight Unreal Engine plugin that automates the creation of folder structures within your project's Content Browser. It reads asset paths directly from your clipboard and instantly recreates the corresponding directory hierarchy in your project.
+**UEtilities** is a lightweight Unreal Engine plugin that automates the creation of folder structures within your project's Content Browser. It reads asset paths directly from your clipboard and instantly recreates the corresponding directory hierarchy in your project.
 
 ## Features
 
@@ -15,16 +15,16 @@
 ## Installation
 
 1.  **Download**: Download this repository from the green Code button.
-2.  **Copy**: Place the `Pathify` folder into your project's `Plugins` directory (create the `Plugins` folder in your project root if it doesn't exist).
+2.  **Copy**: Place the `UEtilities` folder into your project's `Plugins` directory (create the `Plugins` folder in your project root if it doesn't exist).
     *   *Alternative*: To install globally for all projects, place it in `UE_5.x\Engine\Plugins\Marketplace`.
 3.  **Enable Python**:
     *   Open your Unreal Project.
     *   Go to **Edit > Plugins**.
     *   Search for "Python Editor Script Plugin" and enable it.
     *   Restart the Editor if prompted.
-    *   Search for "Pathify" in the Plugins list and make sure it's enabled.
+    *   Search for "UEtilities" in the Plugins list and make sure it's enabled.
     *   Restart the Editor if needed.
-4.  **Verify**: After restart, look for the **Pathify** entry in the **Tools** menu.
+4.  **Verify**: After restart, look for the **UEtilities** entry in the **Tools** menu.
 
 ## Usage
 
@@ -36,7 +36,7 @@
         Game/Content/Marvel/Characters/9999/9999000/Meshes/SK_HeroZero_9999000.uasset
         ```
 2.  **Run Tool**: In the Unreal Editor, go to the top menu bar:
-    *   **Tools** > **Pathify: Recreate Path (Clipboard)**
+    *   **Tools** > **UEtilities: Recreate Path (Clipboard)**
 3.  **Result**: The plugin will parse the paths, find the folder structure relative to `Content`, and create any missing directories in your Content Browser.
 4.  **Report**: A log message will appear in Editor's console summarizing how many folders were created, how many already existed, and if any paths failed.
 

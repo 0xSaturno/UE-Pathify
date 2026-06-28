@@ -2,8 +2,8 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "Pathify",
-	"Description": "Recreates folder structure from asset path in clipboard.",
+	"FriendlyName": "UEtilities",
+	"Description": "UEtilities plugin.",
 	"Category": "Editor",
 	"CreatedBy": "Saturn",
 	"CreatedByURL": "",
@@ -14,10 +14,11 @@
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
-	"Plugins": [
+	"Modules": [
 		{
-			"Name": "PythonScriptPlugin",
-			"Enabled": true
+			"Name": "UEtilities",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
 		}
 	]
 }
