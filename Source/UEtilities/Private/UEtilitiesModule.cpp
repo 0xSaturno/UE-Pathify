@@ -416,7 +416,15 @@ void FUEtilitiesModule::ExecuteAddToDataAsset(TArray<FAssetData> SelectedAssets,
 		TSoftObjectPtr<UObject> SoftPtr(SelectedAsset.ToSoftObjectPath());
 		if (!LabelAsset->ExplicitAssets.Contains(SoftPtr))
 		{
-			LabelAsset->ExplicitAssets.Add(SoftPtr);
+			int32 EmptyIndex = LabelAsset->ExplicitAssets.IndexOfByPredicate([](const TSoftObjectPtr<UObject>& Ptr) { return Ptr.IsNull(); });
+			if (EmptyIndex != INDEX_NONE)
+			{
+				LabelAsset->ExplicitAssets[EmptyIndex] = SoftPtr;
+			}
+			else
+			{
+				LabelAsset->ExplicitAssets.Add(SoftPtr);
+			}
 			bModified = true;
 		}
 	}
